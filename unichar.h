@@ -1,6 +1,8 @@
 #ifndef __UNICHAR_H__
 #define __UNICHAR_H__
 
+#include <stdint.h>
+
 typedef unsigned short unichar;
 
 /* for declare unicode static string 
@@ -13,7 +15,7 @@ typedef unsigned short unichar;
  */
 #define UNISTR(_len) struct{int len;unichar unistr[(_len)+1];}
 
-#define unistrlen(str) (*((int *)(((int)(str)) - sizeof(int))))
+#define unistrlen(str) (*((int *)(((intptr_t)(str)) - sizeof(int))))
 
 unichar *unistrdup(const unichar *str);
 unichar *unistrdup_str(const char *str);
